@@ -1,0 +1,18 @@
+Sun May 11 2025 18:59:33 GMT-0600 (hora estándar central)- 401 - ::1 - Cannot read properties of undefined (reading 'startsWith')
+Sun May 11 2025 19:05:27 GMT-0600 (hora estándar central)- 500 - ::1 - Access denied for user 'mercadolibre_user'@'localhost' (using password: YES)
+Sun May 11 2025 19:11:28 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - jwt malformed
+Sun May 11 2025 19:12:57 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Access denied for user 'mercadolibre_user'@'localhost' (using password: YES)
+Sun May 11 2025 19:37:50 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - No se ha podido procesar la petición. Inténtelo nuevamente más tarde.
+Sun May 11 2025 19:40:16 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - No se ha podido procesar la petición. Inténtelo nuevamente más tarde.
+Sun May 11 2025 19:41:13 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Table 'mercadolibrenode.usuarios' doesn't exist
+Sun May 11 2025 19:41:26 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Table 'mercadolibrenode.usuarios' doesn't exist
+Sun May 11 2025 19:55:13 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - Cannot read properties of undefined (reading 'startsWith')
+Sun May 11 2025 19:56:44 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - Cannot read properties of undefined (reading 'startsWith')
+Sun May 11 2025 20:00:13 GMT-0600 (hora estándar central)- 400 - ::ffff:127.0.0.1 - Expected double-quoted property name in JSON at position 67 (line 4 column 1)
+Sun May 11 2025 20:00:24 GMT-0600 (hora estándar central)- 400 - ::ffff:127.0.0.1 - Expected double-quoted property name in JSON at position 65 (line 4 column 1)
+Sun May 11 2025 21:23:38 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Cannot read properties of undefined (reading 'id')
+Sun May 11 2025 21:38:27 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - categoria is associated to producto using an alias. You've included an alias (categorias), but it does not match the alias(es) defined in your association (categoria).
+Sun May 11 2025 21:38:46 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - categoria is associated to producto using an alias. You've included an alias (categorias), but it does not match the alias(es) defined in your association (categoria).
+Sun May 11 2025 21:44:24 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - categoria is associated to producto using an alias. You've included an alias (categorias), but it does not match the alias(es) defined in your association (categoria).
+Tue May 20 2025 14:32:08 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - jwt expired
+Sat May 24 2025 13:22:04 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - jwt expired

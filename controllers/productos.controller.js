@@ -29,7 +29,6 @@ self.getAll = async function (req, res, next) {
             attributes: [['id', 'productoId'], 'titulo', 'descripcion', 'precio', 'archivoid'],
             include: {
                 model: categoria,
-                as: 'categorias',
                 attributes: [['id', 'categoriaId'], 'nombre', 'protegida'],
                 through: { attributes: [] }
             },
@@ -49,7 +48,6 @@ self.get = async function (req, res, next) {
             attributes: [['id', 'productoId'], 'titulo', 'descripcion', 'precio', 'archivoid'],
             include: {
                 model: categoria,
-                as: 'categorias',
                 attributes: [['id', 'categoriaId'], 'nombre', 'protegida'],
                 through: { attributes: [] }
             }
@@ -113,7 +111,7 @@ self.update = async function (req, res, next) {
 // DELETE: api/productos/5
 self.delete = async function (req, res, next) {
     try {
-        let id = req.params.id
+        const id = req.params.id
         let data = await producto.findByPk(id)
 
         if (!data)
@@ -172,7 +170,7 @@ self.eliminaCategoria = async function (req, res, next) {
         await item.removeCategoria(itemToRemove)
 
         // Bitácora
-        req.bitacora("productocategoria.remover", `${req.param.id}:${req.params.categoriaid}`)
+        req.bitacora("productocategoria.remover", `${req.params.id}:${req.params.categoriaid}`)
         res.status(204).send()
     } catch (error) {
         next(error)

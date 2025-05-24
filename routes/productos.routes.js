@@ -15,7 +15,7 @@ router.post('/', Authorize('Administrador'), productos.productoValidator, produc
 router.put('/:id', Authorize('Administrador'), productos.productoValidator, productos.update)
 
 // DELETE: api/productos/5
-router.delete('/:id', Authorize('Administrador', productos.delete))
+router.delete('/:id', Authorize('Administrador'), productos.delete)
 
 // POST: api/productos/5/categoria
 router.post('/:id/categoria', Authorize('Administrador'), productos.asignaCategoria)

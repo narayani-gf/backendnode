@@ -11,7 +11,7 @@ const errorHandler = (err, req, res, next) => {
     // Se obtiene el mail del usuario actual
     let email = "Anónimo"
     if (req.decodedToken) {
-        email = req.decodedToken(ClaimTypes.Name);
+        email = req.decodedToken[ClaimTypes.Name];
     }
 
     // Se guarda en un archivo de texto
