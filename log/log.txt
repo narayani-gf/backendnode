@@ -16,3 +16,27 @@ Sun May 11 2025 21:38:46 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0
 Sun May 11 2025 21:44:24 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - categoria is associated to producto using an alias. You've included an alias (categorias), but it does not match the alias(es) defined in your association (categoria).
 Tue May 20 2025 14:32:08 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - jwt expired
 Sat May 24 2025 13:22:04 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - jwt expired
+Sat May 24 2025 15:30:14 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - jwt expired
+Sat May 24 2025 15:36:10 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - WHERE parameter "nombre" has invalid "undefined" value
+Sat May 24 2025 15:37:07 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - req.status is not a function
+Sat May 24 2025 15:41:14 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Validation error
+Sat May 24 2025 15:46:18 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - WHERE parameter "nombre" has invalid "undefined" value
+Sat May 24 2025 15:48:31 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Cannot read properties of null (reading 'id')
+Sat May 24 2025 15:49:59 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Cannot read properties of null (reading 'id')
+Sat May 24 2025 15:50:03 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Cannot read properties of null (reading 'id')
+Sat May 24 2025 15:50:37 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Cannot read properties of null (reading 'id')
+Sat May 24 2025 15:59:08 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - WHERE parameter "nombre" has invalid "undefined" value
+Sat May 24 2025 15:59:29 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - WHERE parameter "nombre" has invalid "undefined" value
+Sat May 24 2025 16:00:40 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - {"errors":[{"type":"field","msg":"El campo {0} es obligatorio","path":"rol","location":"body"}]}
+Sat May 24 2025 16:01:14 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - {"errors":[{"type":"field","msg":"El campo {0} es obligatorio","path":"rol","location":"body"}]}
+Sat May 24 2025 16:01:53 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - {"errors":[{"type":"field","msg":"El campo {0} es obligatorio","path":"titulo","location":"body"}]}
+Sat May 24 2025 16:02:21 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - {"errors":[{"type":"field","msg":"El campo {0} es obligatorio","path":"rol","location":"body"}]}
+Sat May 24 2025 16:24:37 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - jwt expired
+Sat May 24 2025 16:24:54 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - jwt expired
+Sat May 24 2025 16:24:55 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - jwt expired
+Sat May 24 2025 16:25:34 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Validation error
+Sat May 24 2025 16:51:43 GMT-0600 (hora estándar central)- 401 - ::1 - Cannot read properties of undefined (reading 'startsWith')
+Sat May 24 2025 19:19:23 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - jwt expired
+Sat May 24 2025 19:20:39 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - jwt expired
+Sat May 24 2025 19:22:18 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - jwt expired
+Sat May 24 2025 20:25:55 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - WHERE parameter "nombre" has invalid "undefined" value
