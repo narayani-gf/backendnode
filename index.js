@@ -33,6 +33,7 @@ app.use("/api/roles", require('./routes/roles.routes'))
 app.use("/api/auth", require('./routes/auth.routes'))
 app.use("/api/archivos", require('./routes/archivos.routes'))
 app.use("/api/bitacora", require('./routes/bitacora.routes'))
+app.use("/api/pedidos", require('./routes/pedidos.routes'))
 app.use((req, res) => { res.status(404).send("Recurso no encontrado") })
 
 // Middleware para el manejo de errores (Debe ser el último middleware a utilizar)

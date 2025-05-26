@@ -42,3 +42,14 @@ Sat May 24 2025 19:22:18 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0
 Sat May 24 2025 20:25:55 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - WHERE parameter "nombre" has invalid "undefined" value
 Mon May 26 2025 11:10:13 GMT-0600 (hora estándar central)- 400 - ::ffff:127.0.0.1 - Expected ',' or '}' after property value in JSON at position 32 (line 3 column 5)
 Mon May 26 2025 11:10:35 GMT-0600 (hora estándar central)- 401 - ::1 - Cannot read properties of undefined (reading 'startsWith')
+Mon May 26 2025 12:56:30 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - t is not defined
+Mon May 26 2025 12:57:07 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - sequelize is not defined
+Mon May 26 2025 12:58:20 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - pedidoProductos is not defined
+Mon May 26 2025 12:59:20 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Cannot read properties of undefined (reading 'create')
+Mon May 26 2025 13:08:23 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Cannot add or update a child row: a foreign key constraint fails (`mercadolibrenode`.`pedido`, CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`usuarioid`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+Mon May 26 2025 13:09:12 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Incorrect integer value: '[object Object]' for column 'productoid' at row 1
+Mon May 26 2025 13:19:59 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Cannot add or update a child row: a foreign key constraint fails (`mercadolibrenode`.`pedido`, CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`usuarioid`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+Mon May 26 2025 13:20:22 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - No se ha podido procesar la petición. Inténtelo nuevamente más tarde.
+Mon May 26 2025 13:24:22 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - producto is not defined
+Mon May 26 2025 13:29:10 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Data too long for column 'usuarioid' at row 1
+Mon May 26 2025 13:29:29 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Cannot add or update a child row: a foreign key constraint fails (`mercadolibrenode`.`pedidoproducto`, CONSTRAINT `pedidoproducto_ibfk_2` FOREIGN KEY (`productoid`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
