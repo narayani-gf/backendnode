@@ -18,11 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     titulo: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(254),
       defaultValue: "Sin título",
     },
     descripcion: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(254),
       defaultValue: "Sin descripción"
     },
     precio: {

@@ -5,9 +5,12 @@ const Op = Sequelize.Op
 let self = {}
 
 self.productoValidator = [
-    body('titulo', 'El campo {0} es obligatorio').not().isEmpty(),
-    body('descripcion', 'El campo {0} es obligatorio').not().isEmpty(),
-    body('precio', 'El campo {0} es obligatorio').not().isEmpty().isDecimal({ force_decimal: false }),
+    body('titulo').not().isEmpty().withMessage("El campo 'titulo' es obligatorio")
+    .isLength({ max: 254 }).withMessage("El campo 'titulo' no debe exceder los 254 caracteres"),
+    body('descripcion').not().isEmpty().withMessage("El campo 'descripcion' es obligatorio")
+    .isLength({ max: 254 }).withMessage("El campo 'descripcion' no debe exceder los 254 caracteres"),
+    body('precio').not().isEmpty().withMessage("El campo 'precio' es obligatorio")
+    .isDecimal({ force_decimal: false }).withMessage("El campo 'precio' es tiene que ser decimal"),
 ]
 
 // GET: api/productos
@@ -68,7 +71,10 @@ self.create = async function (req, res, next) {
         const errors = validationResult(req)
 
         if (!errors.isEmpty())
-            throw new Error(JSON.stringify(errors));
+            return res.status(400).json({
+                message: "Errores de validación",
+                errors: errors.array().map(err => err.msg)
+            });
 
         let data = await producto.create({
             titulo: req.body.titulo,
@@ -91,7 +97,10 @@ self.update = async function (req, res, next) {
         const errors = validationResult(req)
 
         if (!errors.isEmpty())
-            throw new Error(JSON.stringify(errors));
+            return res.status(400).json({
+                message: "Errores de validación",
+                errors: errors.array().map(err => err.msg)
+            });
 
         let id = req.params.id
         let body = req.body

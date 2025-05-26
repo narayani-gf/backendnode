@@ -17,19 +17,19 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     accion: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(254),
       allowNull: false
     },
     elementoid: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(254),
       allowNull: true
     },
     ip: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     usuario: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(254),
       allowNull: false
     },
     fecha: {

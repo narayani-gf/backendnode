@@ -17,11 +17,11 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     nombre: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false
     },
     mime: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     size: {

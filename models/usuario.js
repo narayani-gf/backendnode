@@ -12,20 +12,20 @@ module.exports = (sequelize, DataTypes) => {
 
   usuario.init({
     id: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(36),
       primaryKey: true
     },
     email: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(254),
       unique: true,
       allowNull: false
     },
     passwordhash: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(254),
       allowNull: false
     },
     nombre: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(254),
       allowNull: false
     },
     protegido: {
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: false
     },
     rolid: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(254),
       allowNull: false
     },
   }, {

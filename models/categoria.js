@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     nombre: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(254),
       allowNull: false
     },
     protegida: {

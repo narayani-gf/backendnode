@@ -40,3 +40,5 @@ Sat May 24 2025 19:19:23 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0
 Sat May 24 2025 19:20:39 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - jwt expired
 Sat May 24 2025 19:22:18 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - jwt expired
 Sat May 24 2025 20:25:55 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - WHERE parameter "nombre" has invalid "undefined" value
+Mon May 26 2025 11:10:13 GMT-0600 (hora estándar central)- 400 - ::ffff:127.0.0.1 - Expected ',' or '}' after property value in JSON at position 32 (line 3 column 5)
+Mon May 26 2025 11:10:35 GMT-0600 (hora estándar central)- 401 - ::1 - Cannot read properties of undefined (reading 'startsWith')

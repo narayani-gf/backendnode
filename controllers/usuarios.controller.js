@@ -6,13 +6,16 @@ const crypto = require('crypto')
 let self = {}
 
 self.createUsuarioValidator = [
-    body('nombre').not().isEmpty().withMessage("El campo 'nombre' es obligatorio"),
-    body('rol').not().isEmpty().withMessage("El campo 'rol' es obligatorio"),
-    body('email').not().isEmpty().withMessage("El campo 'email' es obligatorio"),
-    body('email').isEmail().withMessage('El correo electrónico no es válido'),
+    body('nombre').not().isEmpty().withMessage("El campo 'nombre' es obligatorio")
+    .isLength({ max: 254 }).withMessage("El campo 'nombre' no debe exceder los 254 caracteres"),
+    body('rol').not().isEmpty().withMessage("El campo 'rol' es obligatorio")
+    .isLength({ max: 254 }).withMessage("El campo 'rol' no debe exceder los 254 caracteres"),
+    body('email').not().isEmpty().withMessage("El campo 'email' es obligatorio")
+    .isEmail().withMessage('El correo electrónico no es válido')
+    .isLength({ max: 254 }).withMessage("El campo 'email' no debe exceder los 254 caracteres"),
     body('password')
     .not().isEmpty().withMessage("El campo 'password' es obligatorio")
-    .isLength({ min: 8 }).withMessage('La contraseña debe tener al menos 8 caracteres')
+    .isLength({ min: 8, max: 254 }).withMessage('La contraseña debe tener entre 8 y 254 caracteres')
     .matches(/[a-z]/).withMessage('La contraseña debe incluir al menos una minúscula')
     .matches(/[A-Z]/).withMessage('La contraseña debe incluir al menos una mayúscula')
     .matches(/[0-9]/).withMessage('La contraseña debe incluir al menos un número')
@@ -20,14 +23,15 @@ self.createUsuarioValidator = [
 ]
 
 self.updateUsuarioValidator = [
-    body('email').isEmail().withMessage('El correo electrónico no es válido'),
+    body('email').isEmail().withMessage('El correo electrónico no es válido')
+    .isLength({ max: 254 }).withMessage("El campo 'email' no debe exceder los 254 caracteres"),
     body('password')
-    .not().isEmpty().withMessage("El campo 'password' es obligatorio")
-    .isLength({ min: 8 }).withMessage('La contraseña debe tener al menos 8 caracteres')
+    .isLength({ min: 8, max: 254 }).withMessage('La contraseña debe tener entre 8 y 254 caracteres')
     .matches(/[a-z]/).withMessage('La contraseña debe incluir al menos una minúscula')
     .matches(/[A-Z]/).withMessage('La contraseña debe incluir al menos una mayúscula')
     .matches(/[0-9]/).withMessage('La contraseña debe incluir al menos un número')
     .matches(/[^A-Za-z0-9]/).withMessage('La contraseña debe incluir al menos un carácter especial')
+    .optional()
 ]
 
 // GET: api/usuarios
@@ -110,6 +114,14 @@ self.create = async function (req, res, next) {
 // PUT: api/usuarios/email
 self.update = async function (req, res, next) {
     try {
+        const errors = validationResult(req)
+
+        if (!errors.isEmpty())
+            return res.status(400).json({
+                message: "Errores de validación",
+                errors: errors.array().map(err => err.msg)
+            });
+
         const email = req.params.email
         const rolusuario = await rol.findOne({ where: { nombre: req.body.rol } })
         
@@ -129,6 +141,13 @@ self.update = async function (req, res, next) {
         req.bitacora("usuarios.editar", email)
         res.status(204).send()
     } catch (error) {
+        if (error instanceof Sequelize.UniqueConstraintError) {
+            return res.status(400).json({
+                error: "El correo electrónico ya está registrado.",
+                fields: error.errors.map(e => e.path)
+            });
+        }
+
         next(error)
     }
 }

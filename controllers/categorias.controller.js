@@ -4,7 +4,8 @@ const { body, validationResult } = require('express-validator');
 let self = {}
 
 self.categoriaValidator = [
-    body('nombre', 'El campo {0} es obligatorio').not().isEmpty()
+    body('nombre').not().isEmpty().withMessage("El campo 'nombre' es obligatorio")
+    .isLength({ max: 254 }).withMessage("El campo 'nombre' no debe exceder los 254 caracteres"),
 ]
 
 // GET: api/categorias
@@ -35,7 +36,11 @@ self.get = async function (req, res, next) {
 self.create = async function (req, res, next) {
     try {
         const errors = validationResult(req)
-        if (!errors.isEmpty()) throw new Error(JSON.stringify(errors));
+        if (!errors.isEmpty()) 
+            return res.status(400).json({
+                message: "Errores de validación",
+                errors: errors.array().map(err => err.msg)
+            });
 
         let data = await categoria.create({
             nombre: req.body.nombre
@@ -53,7 +58,11 @@ self.create = async function (req, res, next) {
 self.update = async function (req, res, next) {
     try {
         const errors = validationResult(req)
-        if (!errors.isEmpty()) throw new Error(JSON.stringify(errors));
+        if (!errors.isEmpty())
+            return res.status(400).json({
+                message: "Errores de validación",
+                errors: errors.array().map(err => err.msg)
+            });
 
         let id = req.params.id
         let body = req.body
