@@ -1,4 +1,4 @@
-const { pedido, sequelize, pedidoproducto } = require('../models')
+const { pedido, sequelize, pedidoproducto, producto, usuario } = require('../models')
 const fs = require("fs")
 
 let self = {}
@@ -8,11 +8,21 @@ self.create = async function (req, res, next) {
     const t = await sequelize.transaction()
 
     try {
+        const user = await usuario.findOne({ where: { id: req.body.usuarioid } })
+
+        if (!user)
+            return res.status(404).send("Usuario no encontrado")
+
         let newOrder = await pedido.create({
-            usuarioid: req.body.usuarioid
+            usuarioid: user.id
         }, { transaction: t })
 
         for (let product of req.body.productos) {
+            const existedProduct = await producto.findOne({ where: { id: product.productoid } })
+
+            if (!existedProduct)
+                return res.status(404).send(`Producto con el id ${product.productoid} no encontrado`)
+
             await pedidoproducto.create({
                 pedidoid: newOrder.id,
                 productoid: product.productoid,

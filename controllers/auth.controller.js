@@ -32,6 +32,7 @@ self.login = async function (req, res, next) {
         req.bitacora("usuario.login", data.email)
 
         res.status(200).json({
+            id: data.id,
             email: data.email,
             nombre: data.nombre,
             rol: data.rol,

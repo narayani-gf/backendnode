@@ -53,3 +53,7 @@ Mon May 26 2025 13:20:22 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0
 Mon May 26 2025 13:24:22 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - producto is not defined
 Mon May 26 2025 13:29:10 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Data too long for column 'usuarioid' at row 1
 Mon May 26 2025 13:29:29 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - Cannot add or update a child row: a foreign key constraint fails (`mercadolibrenode`.`pedidoproducto`, CONSTRAINT `pedidoproducto_ibfk_2` FOREIGN KEY (`productoid`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+Mon May 26 2025 14:36:26 GMT-0600 (hora estándar central)- 401 - ::ffff:127.0.0.1 - jwt expired
+Mon May 26 2025 14:36:53 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - rol is not defined
+Mon May 26 2025 14:38:24 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - usuario is not defined
+Mon May 26 2025 14:38:38 GMT-0600 (hora estándar central)- 500 - ::ffff:127.0.0.1 - WHERE parameter "id" has invalid "undefined" value
