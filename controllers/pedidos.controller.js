@@ -57,6 +57,27 @@ self.create = async function (req, res, next) {
     }
 }
 
+// GET: api/pedidos
+self.getAll = async function (req, res, next) {
+    try {
+        const data = await pedido.findAll({
+            include: [
+                {
+                    model: producto,
+                    through: { attributes: ['cantidad'] }
+                }
+            ]
+        });
+
+        res.status(200).json(data)
+    } catch (error) {
+        next(error);
+    }
+}
+
+// GET: api/pedidos/usuarios/5
+
+
 // DELETE: api/pedidos/5
 self.delete = async function (req, res, next) {
     try {

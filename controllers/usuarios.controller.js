@@ -22,6 +22,21 @@ self.createUsuarioValidator = [
     .matches(/[^A-Za-z0-9]/).withMessage('La contraseña debe incluir al menos un carácter especial')
 ]
 
+self.createUsuarioCompradorValidator = [
+    body('nombre').not().isEmpty().withMessage("El campo 'nombre' es obligatorio")
+    .isLength({ max: 254 }).withMessage("El campo 'nombre' no debe exceder los 254 caracteres"),
+    body('email').not().isEmpty().withMessage("El campo 'email' es obligatorio")
+    .isEmail().withMessage('El correo electrónico no es válido')
+    .isLength({ max: 254 }).withMessage("El campo 'email' no debe exceder los 254 caracteres"),
+    body('password')
+    .not().isEmpty().withMessage("El campo 'password' es obligatorio")
+    .isLength({ min: 8, max: 254 }).withMessage('La contraseña debe tener entre 8 y 254 caracteres')
+    .matches(/[a-z]/).withMessage('La contraseña debe incluir al menos una minúscula')
+    .matches(/[A-Z]/).withMessage('La contraseña debe incluir al menos una mayúscula')
+    .matches(/[0-9]/).withMessage('La contraseña debe incluir al menos un número')
+    .matches(/[^A-Za-z0-9]/).withMessage('La contraseña debe incluir al menos un carácter especial')
+]
+
 self.updateUsuarioValidator = [
     body('nombre').not().isEmpty().withMessage("El campo 'nombre' es obligatorio")
     .isLength({ max: 254 }).withMessage("El campo 'nombre' no debe exceder los 254 caracteres"),
@@ -86,6 +101,48 @@ self.create = async function (req, res, next) {
 
         if (!rolusuario)
             return res.status(404).send("Rol no encontrado")
+
+        const data = await usuario.create({
+            id: crypto.randomUUID(),
+            email: req.body.email,
+            passwordhash: await bcrypt.hash(req.body.password, 10),
+            nombre: req.body.nombre,
+            rolid: rolusuario.id
+        })
+
+        // Bitácora
+        req.bitacora("usuarios.crear", data.email)
+
+        res.status(201).json({
+            id: data.id,
+            email: data.email,
+            nombre: data.nombre,
+            rolid: rolusuario.nombre
+        })
+    } catch (error) {
+        if (error instanceof Sequelize.UniqueConstraintError) {
+            return res.status(400).json({
+                error: "El correo electrónico ya está registrado.",
+                fields: error.errors.map(e => e.path)
+            });
+        }
+
+        next(error)
+    }
+}
+
+// POST: api/usuarios-compradores
+self.createComprador = async function (req, res, next) {
+    try {
+        const errors = validationResult(req)
+
+        if (!errors.isEmpty())
+            return res.status(400).json({
+                message: "Errores de validación",
+                errors: errors.array().map(err => err.msg)
+            });
+
+        const rolusuario = await rol.findOne({ where: { nombre: "Usuario" } })
 
         const data = await usuario.create({
             id: crypto.randomUUID(),
