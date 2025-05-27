@@ -1,5 +1,5 @@
 const { usuario, rol, Sequelize } = require('../models')
-const { body, validationResult } = require('express-validator');
+const { body, param, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt')
 const crypto = require('crypto')
 
@@ -23,8 +23,11 @@ self.createUsuarioValidator = [
 ]
 
 self.updateUsuarioValidator = [
+    body('nombre').isLength({ max: 254 }).withMessage("El campo 'nombre' no debe exceder los 254 caracteres"),
+    body('rol').isLength({ max: 254 }).withMessage("El campo 'rol' no debe exceder los 254 caracteres"),
     body('email').isEmail().withMessage('El correo electrónico no es válido')
-    .isLength({ max: 254 }).withMessage("El campo 'email' no debe exceder los 254 caracteres"),
+    .isLength({ max: 254 }).withMessage("El campo 'email' no debe exceder los 254 caracteres")
+    .optional(),
     body('password')
     .isLength({ min: 8, max: 254 }).withMessage('La contraseña debe tener entre 8 y 254 caracteres')
     .matches(/[a-z]/).withMessage('La contraseña debe incluir al menos una minúscula')
@@ -123,12 +126,15 @@ self.update = async function (req, res, next) {
             });
 
         const email = req.params.email
-        const rolusuario = await rol.findOne({ where: { nombre: req.body.rol } })
-        
-        if (!rolusuario)
-            return res.status(404).send("Rol no encontrado")
 
-        req.body.rolid = rolusuario.id
+        if (req.body.rol) {
+            const rolusuario = await rol.findOne({ where: { nombre: req.body.rol } })
+        
+            if (!rolusuario)
+                return res.status(404).send("Rol no encontrado")
+
+            req.body.rolid = rolusuario.id
+        }
 
         const data = await usuario.update(req.body, {
             where: { email: email },

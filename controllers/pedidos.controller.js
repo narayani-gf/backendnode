@@ -1,13 +1,29 @@
 const { pedido, sequelize, pedidoproducto, producto, usuario } = require('../models')
 const fs = require("fs")
+const { body, validationResult } = require('express-validator');
 
 let self = {}
+
+self.pedidoValidator = [
+    body('usuarioid').isUUID().withMessage("id de usuario inválido"),
+    body('productos').isArray({ min: 1 }).withMessage("Se requiere al menos un producto"),
+    body('productos.*.productoid').isInt().withMessage("El id del producto debe ser un entero"),
+    body('productos.*.cantidad')
+        .isInt({ min: 1, max: 100 }).withMessage("La cantidad debe ser un número entero positivo entre 1 y 100")
+]
 
 // POST: api/pedidos
 self.create = async function (req, res, next) {
     const t = await sequelize.transaction()
 
     try {
+        const errors = validationResult(req)
+        if (!errors.isEmpty())
+            return res.status(400).json({
+                message: "Errores de validación",
+                errors: errors.array().map(err => err.msg)
+            });
+
         const user = await usuario.findOne({ where: { id: req.body.usuarioid } })
 
         if (!user)

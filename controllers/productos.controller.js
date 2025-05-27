@@ -10,7 +10,13 @@ self.productoValidator = [
     body('descripcion').not().isEmpty().withMessage("El campo 'descripcion' es obligatorio")
     .isLength({ max: 254 }).withMessage("El campo 'descripcion' no debe exceder los 254 caracteres"),
     body('precio').not().isEmpty().withMessage("El campo 'precio' es obligatorio")
-    .isDecimal({ force_decimal: false }).withMessage("El campo 'precio' es tiene que ser decimal"),
+    .isDecimal({ force_decimal: false }).withMessage("El campo 'precio' es tiene que ser decimal")
+    .custom((value) => {
+        if (parseFloat(value) > 99999999.99) {
+            throw new Error("El precio no puede ser mayor a 99,999,999.99")
+        }
+        return true
+    }),
 ]
 
 // GET: api/productos
