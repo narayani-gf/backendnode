@@ -23,8 +23,10 @@ self.createUsuarioValidator = [
 ]
 
 self.updateUsuarioValidator = [
-    body('nombre').isLength({ max: 254 }).withMessage("El campo 'nombre' no debe exceder los 254 caracteres"),
-    body('rol').isLength({ max: 254 }).withMessage("El campo 'rol' no debe exceder los 254 caracteres"),
+    body('nombre').not().isEmpty().withMessage("El campo 'nombre' es obligatorio")
+    .isLength({ max: 254 }).withMessage("El campo 'nombre' no debe exceder los 254 caracteres"),
+    body('rol').not().isEmpty().withMessage("El campo 'rol' es obligatorio")
+    .isLength({ max: 254 }).withMessage("El campo 'rol' no debe exceder los 254 caracteres"),
     body('email').isEmail().withMessage('El correo electrónico no es válido')
     .isLength({ max: 254 }).withMessage("El campo 'email' no debe exceder los 254 caracteres")
     .optional(),
