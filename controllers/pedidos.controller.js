@@ -75,9 +75,6 @@ self.getAll = async function (req, res, next) {
     }
 }
 
-// GET: api/pedidos/usuarios/5
-
-
 // DELETE: api/pedidos/5
 self.delete = async function (req, res, next) {
     try {
