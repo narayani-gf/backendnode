@@ -63,6 +63,10 @@ self.getAll = async function (req, res, next) {
         const data = await pedido.findAll({
             include: [
                 {
+                    model: usuario,
+                    attributes: ['nombre']
+                },
+                {
                     model: producto,
                     through: { attributes: ['cantidad'] }
                 }
